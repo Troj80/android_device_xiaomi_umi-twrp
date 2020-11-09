@@ -61,7 +61,7 @@ odm                                                     /odm                   e
 /dev/block/bootdevice/by-name/fsg                       /efsg                  emmc    defaults                                             defaults,backup,subpartitionof=/efs1
 
 # mount point  fstype  device                             device2                flags
-/data          ext4    /dev/block/bootdevice/by-name/userdata                    flags=fileencryption=ice:aes-256-cts;wrappedkey;keydirectory=/metadata/vold/metadata_encryption
+/data          f2fs    /dev/block/bootdevice/by-name/userdata                    flags=fileencryption=ice:aes-256-cts;wrappedkey;keydirectory=/metadata/vold/metadata_encryption
 
 # Removable storage
 /usb-otg       vfat    /dev/block/sdg1                    /dev/block/sdg         flags=fsflags=utf8;storage;wipeingui;removable
