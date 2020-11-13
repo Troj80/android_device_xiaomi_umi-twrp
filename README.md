@@ -3,7 +3,7 @@ For building TWRP for Xiaomi Mi 10
 
 TWRP device tree for Xiaomi Mi 10
 
-Kernel and all blobs are extracted from MIUI 12 20.11.7 - Android11 firmware.
+Kernel and all blobs are extracted from MIUI 12 20.11.7 - Android 11 firmware.
 
 The Xiaomi Mi 10 (codenamed _"umi"_) are high-end smartphone from Xiaomi.
 
