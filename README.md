@@ -44,8 +44,7 @@ Xiaomi Mi 10 was announced and released in February 2020.
 sudo apt update&&sudo apt install git-core gnupg flex bison gperf zip curl zlib1g-dev gcc-multilib g++-multilib libc6-dev-i386 lib32ncurses5-dev x11proto-core-dev libx11-dev lib32z-dev ccache 
 libgl1-mesa-dev libxml2-utils xsltproc unzip openjdk-8-jdk build-essential git repo fastboot adb
 
-Configuration ccache
-===============================
+# Configuration ccache:
 
 # Enable ccache
 export USE_CCACHE=1
@@ -56,53 +55,34 @@ source ~/.bashrc
 # Configure ccache size
 ccache -M 50G
 
-===============================
 
-Create into the Twrp folder
-===============================
+# Create into the Twrp folder
 
 mkdir -p twrp&&cd twrp
 
-===============================
-
-Synchronize Twrp's omni minimum Tree:
-=================================================================================================
+# Synchronize Twrp's omni minimum Tree:
 
 repo init -u git://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni.git -b twrp-10.0
 repo sync -j8
 
-=================================================================================================
-Add this item to .repo/manifest.xml:
-==========================================================================================================================
+# Add this item to .repo/manifest.xml:
 
 <project path="device/xiaomi/umi" name="Troj80/android_device_xiaomi_umi-twrp" remote="github" revision="android-11.0" />
 
-==========================================================================================================================
-
 Synchronize Device Tree:
-=========================================
-
 repo sync --force-sync device/xiaomi/umi
 
-=========================================
-
-Start compiling:
-=======================================================================================
+# Start compiling:
 
 . build/envsetup.sh
 lunch omni_cmi-eng
 mka recoveryimage ALLOW_MISSING_DEPENDENCIES=true # Only if you use minimal twrp tree.
 
-=======================================================================================
-
-TWRP test:
-==================================================
+# TWRP test:
 
 fastboot boot out/target/product/umi/recovery.img
 
-==================================================
-
-Flash TWRP:
+# Flash TWRP:
 ============================================================
 
 fastboot flash recovery out/target/product/umi/recovery.img
