@@ -5,9 +5,9 @@ TWRP device tree for Xiaomi Mi 10
 
 Kernel and all blobs are extracted from MIUI 12 20.11.7 - Android11 firmware.
 
-The Xiaomi Mi 10 (codenamed _"umi"_) and Xiaomi Mi 10 Pro (codenamed _"cmi"_) are high-end smartphones from Xiaomi.
+The Xiaomi Mi 10 (codenamed _"umi"_) are high-end smartphone from Xiaomi.
 
-Xiaomi Mi 10 / 10 Pro was announced and released in February 2020.
+Xiaomi Mi 10 was announced and released in February 2020.
 
 ## Device specifications
 
