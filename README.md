@@ -77,7 +77,7 @@ repo sync --force-sync device/xiaomi/umi
 ## Start compiling:
 ```
 . build/envsetup.sh
-lunch omni_cmi-eng
+lunch omni_umi-eng
 mka recoveryimage ALLOW_MISSING_DEPENDENCIES=true # Only if you use minimal twrp tree.
 ```
 ## TWRP test:
