@@ -33,7 +33,7 @@ Xiaomi Mi 10 was announced and released in February 2020.
 ```
 - Booting
 - USB-OTG
-- ADB sideload
+- ADB
 - MTP
 - Super partition functions(Dynamic partition)
 ```
