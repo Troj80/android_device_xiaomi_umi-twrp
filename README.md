@@ -1,87 +1,110 @@
 # android_device_xiaomi_umi-twrp
-For building TWRP for Xiaomi Mi 10
+For building TWRP for Xiaomi Mi 10 / 10 Pro
 
-TWRP device tree for Xiaomi Mi 10
+TWRP device tree for Xiaomi Mi 10 and Mi 10 Pro
 
-Kernel,Dtbo,Dtb均提取至MIUI20.11.7-Android11
+Kernel and all blobs are extracted from [miui_UMI_20.5.24_096a7991fe_10.0](https://bigota.d.miui.com/20.5.24/miui_UMI_20.5.24_096a7991fe_10.0.zip) firmware.
 
-## 手机参数
+The Xiaomi Mi 10 (codenamed _"umi"_) and Xiaomi Mi 10 Pro (codenamed _"cmi"_) are high-end smartphones from Xiaomi.
 
-| Device       | Xiaomi Mi 10                           |
+Xiaomi Mi 10 / 10 Pro was announced and released in February 2020.
+
+## Device specifications
+
+| Device       | Xiaomi Mi 10 / 10 Pro                       |
 | -----------: | :------------------------------------------ |
-| SoC          | 高通 骁龙865              |
-| 初始版本 | Android10.0                               |
+| SoC          | Qualcomm SM8250 Snapdragon 865              |
+| CPU          | 8x Qualcomm® Kryo™ 585 up to 2.84GHz        |
+| GPU          | Adreno 630                                  |
+| Memory       | 8GB / 12GB RAM (LPDDR5)                     |
+| Shipped Android version | 10                               |
+| Storage      | 128GB / 256GB / 512GB UFS 3.0 flash storage |
+| Battery      | Non-removable Li-Po 4780mAh                 |
+| Dimensions   | 162.58 x 74.8 x 8.96 mm                     |
+| Display      | 2340 x 1080 (19.5:9), 6.67 inch             |
 
+## Device picture
 
-## 特性
+![Xiaomi Mi 10](https://cdn.cnbj0.fds.api.mi-img.com/b2c-shopapi-pms/pms_1581494372.61732687.jpg)
 
-**支持**
-- 启动
-- ADB
-- MTP
-- 动态分区
+## Features
+
+**Works**
+
+- Booting
 - USB-OTG
-
-**不支持**
-- 震动
 - ADB sideload
-- 解密(安卓11不支持)
+- MTP
+- Super partition functions(Dynamic partition)
 
+**Not Working**
+- [Decryption](https://github.com/simonsmh/android_bootable_recovery/commits/android-10.0)(not supported by Android 11)
 
-## 编译
-
-安装环境
-```
+## Compile
 sudo apt update&&sudo apt install git-core gnupg flex bison gperf zip curl zlib1g-dev gcc-multilib g++-multilib libc6-dev-i386 lib32ncurses5-dev x11proto-core-dev libx11-dev lib32z-dev ccache 
 libgl1-mesa-dev libxml2-utils xsltproc unzip openjdk-8-jdk build-essential git repo fastboot adb
-```
-配置ccache
-```
-# 启用ccache
+
+Configuration ccache
+===============================
+
+# Enable ccache
 export USE_CCACHE=1
-# 改变ccache缓存路径
+# Change ccache path
 export CCACHE_DIR=~/.ccache
-# 生效
+# Take effect
 source ~/.bashrc
-# 配置ccache大小
+# Configure ccache size
 ccache -M 50G
-```
 
-创建进入Twrp文件夹
-```
+===============================
+
+Create into the Twrp folder
+===============================
+
 mkdir -p twrp&&cd twrp
-```
 
-同步Twrp的omni最小Tree:
-```
+===============================
+
+Synchronize Twrp's omni minimum Tree:
+=================================================================================================
+
 repo init -u git://github.com/minimal-manifest-twrp/platform_manifest_twrp_omni.git -b twrp-10.0
 repo sync -j8
-```
 
-添加这个项目到 .repo/manifest.xml:
+=================================================================================================
+Add this item to .repo/manifest.xml:
+==========================================================================================================================
 
-```xml
-<project path="device/xiaomi/umi" name="LittleTurtle2333/android_device_xiaomi_umi-twrp" remote="github" revision="android-11.0" />
-```
+<project path="device/xiaomi/umi" name="Troj80/android_device_xiaomi_umi-twrp" remote="github" revision="android-11.0" />
 
-同步Device Tree:
-```
+==========================================================================================================================
+
+Synchronize Device Tree:
+=========================================
+
 repo sync --force-sync device/xiaomi/umi
-```
 
-开始编译:
-```
+=========================================
+
+Start compiling:
+=======================================================================================
+
 . build/envsetup.sh
 lunch omni_cmi-eng
 mka recoveryimage ALLOW_MISSING_DEPENDENCIES=true # Only if you use minimal twrp tree.
-```
 
-临时测试:
-```
+=======================================================================================
+
+TWRP test:
+==================================================
+
 fastboot boot out/target/product/umi/recovery.img
-```
 
-刷入:
-```
+==================================================
+
+Flash TWRP:
+============================================================
+
 fastboot flash recovery out/target/product/umi/recovery.img
-```
+
+============================================================
