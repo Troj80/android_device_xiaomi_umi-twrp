@@ -83,9 +83,6 @@ void vendor_load_properties() {
     } else {
         model_property_override("umi", "Mi 10");
     }
-#else
-    model_property_override("cmi", "Mi 10 Pro");
-#endif
 }
 
 }
